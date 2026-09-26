@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>CREATOR Coin</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, system-ui, sans-serif;
+      background: #0f1115;
+      color: #e6e8ec;
+      margin: 0;
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: #171a21;
+      border: 1px solid #262a34;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+    .coin-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #9aa1af;
+      letter-spacing: 0.04em;
+    }
+    .status {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #1c2a20;
+      color: #4ade80;
+    }
+    .status.connecting {
+      background: #2a2416;
+      color: #f0b429;
+    }
+    #price {
+      font-size: 44px;
+      font-weight: 700;
+      margin: 4px 0 2px;
+      letter-spacing: -0.02em;
+    }
+    .price-up { color: #4ade80; }
+    .supply {
+      color: #7b8291;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+    button {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #6c5ce7, #4b3cf0);
+      color: white;
+      cursor: pointer;
+      margin-bottom: 26px;
+      transition: transform 0.05s ease;
+    }
+    button:active { transform: scale(0.98); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7b8291;
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+    ul { list-style: none; padding: 0; margin: 0; max-height: 220px; overflow-y: auto; }
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid #21252e;
+      font-size: 13px;
+      color: #c4c9d4;
+    }
+    li:last-child { border-bottom: none; }
+    .amount { color: #9aa1af; }
+    .new-price { color: #4ade80; font-weight: 600; }
+    .empty { color: #565c69; font-size: 13px; padding: 10px 0; }
+
+    /* auth UI */
+    .tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 9px 0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #7b8291;
+      background: #1c1f27;
+    }
+    .tab.active { background: #262246; color: #b3a4ff; }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1px solid #262a34;
+      background: #0f1115;
+      color: #e6e8ec;
+      font-size: 14px;
+    }
+    input:focus { outline: none; border-color: #6c5ce7; }
+    .auth-error {
+      color: #f87171;
+      font-size: 13px;
+      margin: -4px 0 14px;
+    }
+    .account-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #7b8291;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #21252e;
+    }
+    .logout-link {
+      color: #9aa1af;
+      cursor: pointer;
+      text-decoration: underline;
+      background: none;
+    }
+    .holdings {
+      background: #1c1f27;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      color: #c4c9d4;
+      display: flex;
+      justify-content: space-between;
+    }
+    .holdings strong { color: #e6e8ec; }
+    .trade-who { color: #565c69; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Socket.IO client (auto-served by the Socket.IO server) -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- React, ReactDOM, Babel — local copies served from public/vendor -->
+  <script src="/vendor/react.development.js"></script>
+  <script src="/vendor/react-dom.development.js"></script>
+  <script src="/vendor/babel.min.js"></script>
+
+  <!-- Components — ORDER MATTERS.
+       AuthScreen and TradingScreen must load before App.js
+       because App references both of them by name. -->
+  <script type="text/babel" src="/components/AuthScreen.js"></script>
+  <script type="text/babel" src="/components/TradingScreen.js"></script>
+  <script type="text/babel" src="/components/App.js"></script>
+</body>
+</html>

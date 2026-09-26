@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Environment variables — contains real database credentials, never commit
+.env
+
+# SQLite database file from the original version
+app.db
+
+# Leftover curl test file
+cookies.txt
+
+# macOS metadata
+.DS_Store
+
+# Local dev tunnel helper
+tunnel.sh

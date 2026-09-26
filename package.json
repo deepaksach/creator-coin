@@ -1,0 +1,16 @@
+{
+  "name": "backend-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.2.1",
+    "pg": "^8.13.3",
+    "socket.io": "^4.8.3"
+  }
+}
